@@ -66,3 +66,24 @@ h1 a, header a { color: #333;}
 .fr { float: right; }
 
 .gray { color: #999; }
+
+/* NAV */
+header ul {
+    padding-left: 0;
+}
+
+header ul li {
+    list-style-type: none;
+    display: inline-block;
+}
+
+header ul li:after {
+    content: "\b7";
+    width: 1em;
+    text-align: center;
+    display: inline-block;
+}
+
+header ul li:last-child:after {
+    content: "";
+}
