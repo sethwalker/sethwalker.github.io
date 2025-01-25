@@ -1,0 +1,32 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <h2>Public Talks</h2>
+      <h3>
+        <p>
+          <a href="/talks/a-public-commitment-to-performance"
+            >A Public Commitment to Performance</a
+          > - Presented at Velocity NYC 2013
+        </p>
+        <h3>
+          <p>
+            <a href="/talks/continuous-experimentation"
+              >Performance and Maintainability with Continuous Experimentation</a
+            > - Presented at Front-end Ops Conference 2014
+          </p>
+        </h3>
+      </h3>
+    </main>
+  </body>
+</html>

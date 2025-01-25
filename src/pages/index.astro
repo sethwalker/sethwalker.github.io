@@ -1,0 +1,72 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header />
+    <main></main>
+    <Footer />
+    <script type="text/javascript">
+      const body = document.querySelector("body");
+
+      function updateGradient(e) {
+        // Mouse position
+        const x = e.clientX;
+        const y = e.clientY;
+
+        // Size of viewport
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+
+        // Calculate x and y percentages
+        const xPercent = x / width;
+        const yPercent = y / height;
+
+        // Calculate white point based on mouse position
+        const whitePoint = xPercent * 50 + yPercent * 50;
+
+        // Adjust color stops based on proximity to corners
+        const secondColorStop = (whitePoint / 100) * whitePoint;
+        const fourthColorStop =
+          whitePoint + ((100 - whitePoint) * whitePoint) / 100;
+
+        // Update background
+        body.style.background = `linear-gradient(to bottom right,
+									rgb(224,242,255),
+									rgb(211,234,253) ${secondColorStop}%,
+									white ${whitePoint}%,
+									rgb(233,216,241) ${fourthColorStop}%,
+									rgb(245,224,236))`;
+      }
+
+      // Listen for mouse move
+      document.addEventListener("mousemove", updateGradient);
+    </script>
+  </body>
+</html>
+<style>
+  /* Body fills viewport */
+  body {
+    height: 100vh;
+    margin: 0;
+  }
+  /* Initial gradient */
+  body {
+    background: linear-gradient(
+      to bottom right,
+      rgb(224, 242, 255),
+      rgb(211, 234, 253),
+      white,
+      rgb(233, 216, 241),
+      rgb(245, 224, 236)
+    );
+  }
+</style>
